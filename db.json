@@ -1,0 +1,66 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Juliet Oma",
+      "email": "julie@yahoo.com",
+      "password": "123456789"
+    },
+    {
+      "id": 2,
+      "name": "James Williams",
+      "email": "jameswilly@gmail.com",
+      "password": "123456789"
+    },
+    {
+      "id": 3,
+      "name": "Ahmed Ali",
+      "email": "ahmedali012@gmail.com",
+      "password": "123456789"
+    },
+    {
+      "id": 4,
+      "name": "Grace Funsho",
+      "email": "gracefunsho@gmail.com",
+      "password": "123456789"
+    },
+    {
+      "email": "jameswilly@gmail.com",
+      "password": "123456789",
+      "id": 5
+    },
+    {
+      "email": "jameswilly@gmail.com",
+      "password": "213456789",
+      "id": 6
+    },
+    {
+      "email": "jameswilly@gmail.com",
+      "password": "123456789",
+      "id": 7
+    },
+    {
+      "email": "test1@email.com",
+      "password": "123456789",
+      "id": 8
+    },
+    {
+      "email": "test3@email.com",
+      "password": "123456789",
+      "name": "test3",
+      "id": 9
+    },
+    {
+      "email": "test3@email.com",
+      "password": "123456789",
+      "name": "test3",
+      "id": 10
+    },
+    {
+      "email": "test3@email.com",
+      "password": "123456789",
+      "name": "test3",
+      "id": 11
+    }
+  ]
+}
