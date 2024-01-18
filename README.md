@@ -17,7 +17,7 @@ Wallet Frontend is a React Native application that allows users to manage and ed
 
 ### Prerequisites
 
-- Node.js (version x.x.x)
+- Node.js
 - Expo CLI
 - React Native
 - Backend server running on http://localhost:3000 (Refer to your backend documentation for setup)
@@ -27,7 +27,22 @@ Wallet Frontend is a React Native application that allows users to manage and ed
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/wallet-frontend.git
+   git clone https://github.com/hemanthPVV/wallet-frontend.git
    ```
 
-2.
+## Dependencies
+
+- @emotion/react
+- @emotion/styled
+- @expo/webpack-config
+- @mui/icons-material
+- @mui/material
+- @react-navigation/native
+- @react-navigation/native-stack
+- axios
+- cors
+- expo
+- expo-status-bar
+- react
+- react-native
+- react-native-web
