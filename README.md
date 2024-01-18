@@ -1,48 +1,88 @@
-# WALLET APPLICATION
+#Wallet Frontend
+##Overview
+Wallet Frontend is a React Native application that allows users to manage and edit user information. It leverages React, React Native, and Axios for efficient communication with a backend server.
 
-## Installed Node Packages
-    - nodemon
-    - bcryptjs
-    - cors
-    - dotenv
-    - express
-    - jsonwebtoken
-    - sequelize
-    - sqlite3
+##Features
+Display a list of users with their names and email addresses.
+Edit user information such as name and email.
+Update user information via the backend server.
+A navigation bar (SearchAppBar) that provides easy navigation to different sections of the application.
+Authentication pages for signing in (SignIn) and signing up (SignUp).
+A home page (home) that showcases the application's main content.
+##Getting Started
+###Prerequisites
+Node.js (version x.x.x)
+Expo CLI
+React Native
+Backend server running on http://localhost:3000 (Refer to your backend documentation for setup)
+###Installation
+1.Clone the repository:
 
-## Technologies used to build the application
-  - node JS
-  - SqLite
+bash
+Copy code
+git clone https://github.com/your-username/wallet-frontend.git
+2.Navigate to the project directory:
 
-## Prerequisites 
-  - [nodejs](https://nodejs.org/en/download).
-  - [npm](https://nodejs.org/en/download).
-  - [postman](https://www.postman.com/downloads/)
-  - [SqLiteBrowser](https://sqlitebrowser.org/dl/) for database
+bash
+Copy code
+cd wallet-frontend
+3.Install dependencies:
 
-## Setup Application
-   - Unzip in wallet-application in local windows or clone from [gitHub](https://github.com/ganeshdamuluri/wallet_application)
-   - create new *.env* using command (`$ cp  wallet-application/.env.example  wallet-application/.env`) and paste following
-		`NODE_ENV=development
-		DB_HOST=localhost
-		DB_DIALECT=sqlite
-		DB_ALIAS=false
-		DB_FILE=./data/walletDB.db
-		TOKEN_KEY=wallettransationsapp`
-   - From the root directory *wallet-application* run the following command (`$ cd wallet-application`)
-		`npm i` or `npm install`
-   - To run the application using 
-		`nodemon` or `node server.js`
+bash
+Copy code
+npm install
+###Usage
+1.Start the development server:
 
-## Import postman Collection
-   - from the postman application -> import -> select collection.json ->open
+bash
+Copy code
+npm start
+2.Scan the QR code with the Expo Go app on your device or run on an emulator.
 
-## DB Setup
-   - Download and install DB Browser for [sqLite](https://sqlitebrowser.org/dl/)
-   - click on `open database` browse the file path to your application and under data select `walletDB.db`
-     your file location to project/WALLET-APPLICATION/data/walletDB.db
+##Components
+###SearchAppBar
+The SearchAppBar component is a navigation bar that provides quick access to different sections of the application. It includes:
 
-## How to use the application from postman
- 1. create a new user from the WALLET-API's/Auth/Register API, update all the details, and send, it will create a new user in the database and generate a Token
- 2. for all Wallet and Transaction API's use this token/ replace token in headers-> x-access-token
-[{"key":"x-access-token","value":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0MUBlbWFpbC5jb20iLCJpYXQiOjE2ODMyNTIzNzgsImV4cCI6MTY4MzI1OTU3OH0.GBnmeR7bqwarjZM2RvegB3b_bMR1NnxWT9QLCAP7e5I","type":"text","enabled":true,"description":""}]
+Menu button for navigation drawer.
+Main page title.
+Button group for navigation to different pages (e.g., Users).
+More actions button for additional options.
+###SignIn
+The SignIn component provides a user interface for signing into the application. It includes:
+
+Input fields for email and password.
+Remember me checkbox.
+Sign In button.
+Links for forgot password and creating a new account.
+###SignUp
+The SignUp component offers a user interface for creating a new account. It includes:
+
+Input fields for first name, last name, email, password, and confirm password.
+Sign Up button.
+Link for users who already have an account to Sign In.
+###home
+The home component represents the main content of the application. Currently, it includes the SearchAppBar component.
+
+##Dependencies
+@emotion/react
+@emotion/styled
+@expo/webpack-config
+@mui/icons-material
+@mui/material
+@react-navigation/native
+@react-navigation/native-stack
+axios
+cors
+expo
+expo-status-bar
+react
+react-native
+react-native-web
+##Contributing
+If you want to contribute to this project, follow these steps:
+
+Fork the project.
+Create a new branch (git checkout -b feature/new-feature).
+Commit your changes (git commit -m 'Add new feature').
+Push to the branch (git push origin feature/new-feature).
+Open a pull request.
