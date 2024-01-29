@@ -6,7 +6,7 @@ import { loginUser } from '../redux/actions/authActions'; // Use the correct act
 const Dashboard = () => {
   const user = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-
+  console.log(user.user);
   useEffect(() => {
     const loadStoredUser = async () => {
       try {
@@ -26,7 +26,7 @@ const Dashboard = () => {
   return (
     <div>
       {user? (
-        <h2>Welcome, {user.isAuthenticated && user.user.name}!</h2>
+        <h2>Welcome, {user.isAuthenticated && user.user.user.name}!</h2>
       ) : (
         <p>User not logged in</p>
       )}
