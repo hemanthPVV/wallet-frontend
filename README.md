@@ -32,15 +32,12 @@ Wallet Frontend is a React Native application that allows users to manage and ed
 
 ## Dependencies
 
-- @emotion/react
-- @emotion/styled
-- @expo/webpack-config
-- @mui/icons-material
-- @mui/material
-- @react-navigation/native
-- @react-navigation/native-stack
+- expo/webpack-config
+- mui/icons-material
+- mui/material
+- react-navigation/native
+- react-navigation/native-stack
 - axios
-- cors
 - expo
 - expo-status-bar
 - react

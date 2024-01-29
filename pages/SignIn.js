@@ -1,4 +1,6 @@
 //import * as React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,14 +15,32 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 //import SearchAppBar from '../components/Navbar';
 import { View, TextInput, Alert } from 'react-native';
+import UsersList from './UsersList';
+import Dashboard from './Dashboard';
 import axios from 'axios';
-
+import { loginUser } from '../redux/actions/authActions';
 
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const [user, setUser] = React.useState(null);
+  const navigation=useNavigation();
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    checkForUser();
+  }, []);
+
+  const checkForUser = async () => {
+    const storedUser = await AsyncStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+      //navigation.navigate("Dashboard");
+    }
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -33,11 +53,27 @@ export default function SignIn() {
     console.log('Entered Credentials:', dataToSend);
 
     try {
-      const response = await axios.post('http://localhost:3000/users', dataToSend);
+      const response = await axios.post('http://localhost:3000/api/auth/login', dataToSend);
        
       const token = response.data.token;
       console.log('Token:', token);
 
+      await AsyncStorage.setItem('user', JSON.stringify({
+        email: response.data.email,
+        name:response.data.name,
+        token: token,
+      }));
+      
+      dispatch(loginUser({ user: { email: response.data.email, name: response.data.name, token: token } }));
+
+
+      setUser({
+        email: response.data.email,
+        name:response.data.name,
+        token: token,
+      });
+
+      navigation.navigate("Dashboard");
     } catch (error) {
       console.error('Error signing in:', error.message);
   
@@ -52,7 +88,7 @@ export default function SignIn() {
 
   
 
-  const navigation=useNavigation();
+
   return (
     
     <ThemeProvider theme={defaultTheme}>

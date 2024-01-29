@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigation } from '@react-navigation/native';
 import {
   StyleSheet,
   Text,
@@ -18,7 +19,7 @@ export default function UsersList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/users");
+        const response = await axios.get("http://localhost:3000/api/users");
         console.log(response);
         setUsers(response.data || []); // Assuming the response has a 'users' property
       } catch (error) {
@@ -39,11 +40,18 @@ export default function UsersList() {
   const handleUpdate = async (userId) => {
     try {
       const response = await axios.patch(
-        `http://localhost:3000/users/${userId}`,
+        `http://localhost:3000/api/users/update/${userId}`,
         {
           name: editedName,
-          email: editedEmail,
-        }
+          //email: editedEmail,
+        },
+        {
+          headers:{
+            'Content-Type': 'application/json',
+          }
+        },
+        { withCredentials: true }
+      
       );
 
       // Assuming the server responds with the updated user data

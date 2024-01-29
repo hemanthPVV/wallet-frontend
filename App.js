@@ -5,12 +5,16 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import SearchAppBar from './components/Navbar';
+import Dashboard from './pages/Dashboard';
 import UsersList from './pages/UsersList';
+import { Provider } from 'react-redux';
+import store from './redux/store/store';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator>
        <Stack.Screen name="Main" options={{ headerShown: false }}>
@@ -27,9 +31,10 @@ export default function App() {
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="SignIn" component={SignIn} /> 
         <Stack.Screen name="UsersList" component={UsersList} /> 
+        <Stack.Screen name="Dashboard" component={Dashboard}/>
       </Stack.Navigator>
     </NavigationContainer>
-    
+    </Provider>
     
     
   );

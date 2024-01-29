@@ -14,35 +14,37 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigation } from '@react-navigation/native';
 import SearchAppBar from '../components/Navbar';
-
+import { useDispatch } from 'react-redux';
+import { signUp, signUpUser } from '../redux/actions/authActions';
 import React, { useState } from 'react';
 import axios from 'axios';
 
 const defaultTheme = createTheme();
 
 const SignUp = () => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    
+//if(formData.get('password')==formData.get('confirmPassword')){
     const dataToSend = {
-      firstName: formData.get('firstName'),
-      lastName: formData.get('lastName'),
+      name: formData.get('firstName') +' '+formData.get('lastName'),
+      //: formData.get('lastName'),
       email: formData.get('email'),
       password: formData.get('password'),
-      confirmPassword: formData.get('confirmPassword'),
+      //confirmPassword: formData.get('confirmPassword'),
     };
 
     console.log('Entered Credentials:', dataToSend);
 
     try {
-      const response = await axios.post('https://api.example.com/signup', dataToSend);
+      const response = await axios.post('http://localhost:3000/api/auth/register', dataToSend);
       const token = response.data.token;
       // Handle the response data here
       console.log('Token:', token);
-
+      ispatch(signUpUser({ user: { email: response.data.email, name: response.data.name, token: token } }));
       
     } catch (error) {
       // Handle errors
@@ -50,6 +52,10 @@ const SignUp = () => {
 
       // Display an error message to the user or perform other error handling tasks
     }
+  // }
+  // else{
+  //   alert('password and confirmPassword should be same')
+  // }
     // console.log({
     //   email: data.get('email'),
     //   password: data.get('password'),
